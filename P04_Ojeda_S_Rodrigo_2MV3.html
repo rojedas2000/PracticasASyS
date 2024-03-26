@@ -1,0 +1,502 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Pr&aacute;ctica 4: Se&ntilde;ales Discretas</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-03-25">
+<meta name="DC.source" content="P04_Reyes_G_Nathalia_2MV3.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h1>Pr&aacute;ctica 4: Se&ntilde;ales Discretas</h1>
+<!--introduction-->
+<div>
+<ul>
+<li>Hern&aacute;ndez L&oacute;pez Daniel</li>
+<li>Jaime Hern&aacute;ndez Jaime</li>
+<li>Ojeda Salgado Rodrigo</li>
+<li>Reyes Guevara Nathalia</li>
+<li>Riveros Valencia Javier Alejandro</li>
+<li>2MV3</li>
+</ul>
+</div>
+<!--/introduction-->
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Objetivos de la pr&aacute;ctica</a>
+</li>
+<li>
+<a href="#2">Se&ntilde;ales discretas</a>
+</li>
+<li>
+<a href="#3">Ejercicio 1</a>
+</li>
+<li>
+<a href="#7">Ejercicio 2</a>
+</li>
+<li>
+<a href="#24">Ejercicio 3</a>
+</li>
+<li>
+<a href="#30">Ejercicio 4</a>
+</li>
+<li>
+<a href="#47">Ejercicio 5</a>
+</li>
+<li>
+<a href="#49">Referencias</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Objetivos de la pr&aacute;ctica</h2>
+<div>
+<ul>
+<li>Manipulaci&oacute;n b&aacute;sica de MATLAB</li>
+<li>Gr&aacute;ficas de se&ntilde;ales reales y complejas discretas</li>
+<li>Transformaci&oacute;n de se&ntilde;ales discretas (escalamientos y traslaciones)</li>
+</ul>
+</div>
+<h2 id="2">Se&ntilde;ales discretas</h2>
+<h2 id="3">Ejercicio 1</h2>
+<p>Para permitir el muestreo ascendente, es necesario modificar la funci&oacute;n para que asigne un cero a las entradas que no sean enteras.</p>
+<pre class="codeinput">figure;
+f = @(n) exp(-n/5).*cos(pi*n/5).*(n&gt;=0).*(n==fix(n));
+n = -10:10; stem(n,f(n/2),<span class="string">'k.'</span>); ylabel(<span class="string">'f[n/2]'</span>); xlabel(<span class="string">'n'</span>); axis([-10.5 10.5 -0.5 1.1]);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_01.png" alt=""> <p>El t&eacute;rmino agregado (n==fix(n)) es uno si n es un n&uacute;mero entero y cero si n no es un n&uacute;mero entero. el modificado La funci&oacute;n es f&aacute;cil de probar.</p>
+<pre class="codeinput">figure;
+f = @(n) exp(-n/5).*cos(pi*n/5).*(n&gt;=0).*(n==fix(n));
+n = -10:10; stem(n,f(n/2),<span class="string">'k.'</span>); ylabel(<span class="string">'f[n/2]'</span>); xlabel(<span class="string">'n'</span>); axis([-10.5 10.5 -0.5 1.1]);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_02.png" alt=""> <h2 id="7">Ejercicio 2</h2>
+<p>Para las se&ntilde;ales mostradas en la figura P3.1-1b,bosqueje las siguientes se&ntilde;ales: Generando la funci&oacute;n original Iniciamos recreando la se&ntilde;al, mostrada en la grafica que muestra "Lathi" Hacemos anonima la funcion y la guardamos en la varibale "y". Continuamente proponemos un intervalo adecuado y se pueda representar en la grafica correctamente. Definir los puntos de la se&ntilde;al discreta</p>
+<pre class="codeinput">x = [0 1 2 3 4 5 6];
+y = [0 1 2 3 2 1 0];
+</pre>
+<pre class="codeinput">stem(x, y, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'b'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_03.png" alt=""> <p>Establecer el rango de los ejes</p>
+<pre class="codeinput">xlim([-1 7]);
+ylim([-1 4]);
+
+grid <span class="string">on</span>;
+
+title(<span class="string">'x[n]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[n]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_04.png" alt=""> <p>Aplicar transformaciones (a) x[-n]: La se&ntilde;al se refleja en el eje horizontal</p>
+<pre class="codeinput">figure;
+x_b = x - 6;
+y_b = y;
+stem(x_b, y_b, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'bl'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[-n]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[-n]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_05.png" alt=""> <p>(b) x[n+6]: Se adelanta 6 unidades</p>
+<pre class="codeinput">figure;
+x_b = x - 6;
+y_b = y;
+stem(x_b, y_b, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'b'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[n+6]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[n+6]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_06.png" alt=""> <p>(c) x[n-6]: La se&ntilde;al se atraza 6 unidades</p>
+<pre class="codeinput">figure;
+x_c = x + 6;
+y_c = y;
+stem(x_c, y_c, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'b'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[n-6]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[n-6]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_07.png" alt=""> <p>(d) x[3n]: Compresi&oacute;n en el eje n por un factor de 3</p>
+<pre class="codeinput">figure;
+x_d = -1:6;
+y_d = [0 0 3 0 0 0 0 0];
+stem(x_d, y_d, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'b'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[3n]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[3n]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_08.png" alt=""> <p>(e) x[n/3]: Expansi&oacute;n en el eje n por un factor de 3</p>
+<pre class="codeinput">figure;
+x_e = x * 3;
+y_e = y;
+stem(x_e, y_e, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'bl'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'bl'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[n/3]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[n/3]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_09.png" alt=""> <p>(f) x[3-n]: Reflejo respecto al eje horizontal y desplazamiento hacia la derecha en 3 unidades</p>
+<pre class="codeinput">figure;
+x_f = 3 - x;
+y_f = y;
+stem(x_f, y_f, <span class="string">'filled'</span>, <span class="string">'MarkerFaceColor'</span>, <span class="string">'b'</span>, <span class="string">'MarkerEdgeColor'</span>, <span class="string">'b'</span>);
+grid <span class="string">on</span>;
+title(<span class="string">'x[3-n]'</span>);
+xlabel(<span class="string">'n'</span>);
+ylabel(<span class="string">'x[3-n]'</span>);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_10.png" alt=""> <h2 id="24">Ejercicio 3</h2>
+<p>Para empezar, observamos que x(t) comienza en t = π. Dado que 2&minus;t decae a menos de 1/100 de su resistencia original en 7 segundos, es suficiente representar x(t) en t = 10.</p>
+<p>Dado que xo(t) incluye x(t) y su reflexi&oacute;n, a el rango de tiempo adecuado para nuestra gr&aacute;fica es &minus;10 &le; t &le; 10.</p>
+<pre class="codeinput"> u = @(t) 1.0*(t&gt;=0); t = -10:1/20:10;
+</pre>
+<p>Dado que cos(2πt) oscila un ciclo por segundo, a una densidad de trama de 20 puntos por segundo es suficiente para una trama de calidad razonable.</p>
+<pre class="codeinput"> x = @(t) 2.^(-t).*cos(2*pi*t).*u(t-pi); xo = @(t) (x(t)-x(-t))/2;
+</pre>
+<p>Usamos la funcion plot con las variables previamente designadas y graficamos:</p>
+<pre class="codeinput"> plot(t,xo(t),<span class="string">'k-'</span>); xlabel(<span class="string">'t'</span>); ylabel(<span class="string">'x_o(t)'</span>); grid <span class="string">on</span>;
+ axis([-10 10 -1/20 1/20]); set(gca,<span class="string">'xtick'</span>,[-10 -pi 0 pi 10]);
+</pre>
+<img vspace="5" hspace="5" src="P04_Reyes_G_Nathalia_2MV3_11.png" alt=""> <h2 id="30">Ejercicio 4</h2>
+<p>Problema 3.1-1 c Find the energy of the signal depicted in Fig.P3.1-1c</p>
+<p>
+<img vspace="5" hspace="5" src="img2.PNG" alt=""> </p>
+<p>
+<img vspace="5" hspace="5" src="img1.PNG" alt=""> </p>
+<p>Por la naturaleza de la se&ntilde;al podemos definir este intervalo</p>
+<pre class="codeinput">n = -3:3;
+</pre>
+<pre class="codeinput">sympref(<span class="string">'HeavisideAtOrigin'</span>,1);
+</pre>
+<p>Hacemos an&oacute;nima a la funcion</p>
+<pre class="codeinput">xn = @(n) 3*n.*(heaviside(n+3)-heaviside(n-4));
+</pre>
+<p>Revisando el ejercicio 3 la formula para el c&aacute;lculo general de la energ&iacute;a de una se&ntilde;al discreta finita ser&aacute;: E=(sum(f(n).^2) con el intervalo n definido Aplicamos la formula para la se&ntilde;al xn, y obtenemos</p>
+<pre class="codeinput">Exn = sum(xn(n).^2);
+</pre>
+<p>Problema 3.1-2 3.1-2 Find the power of the signals illustrated in Fig.P3.1-2.</p>
+<p>
+<img vspace="5" hspace="5" src="FILENAME.PNG" alt=""> </p>
+<p>
+<img vspace="5" hspace="5" src="FILENAME.PNG" alt=""> </p>
+<p>Como se observa que la funcion es periodica podemos definir la se&ntilde;al en el intervalo de 0 hasta No-1, pero para fines pr&aacute;cticos la definiremos en (-3,8)</p>
+<pre class="codeinput">sympref(<span class="string">'HeavisideAtOrigin'</span>,1);
+
+n1 = -3:8;
+</pre>
+<p>Esto por que No = 12</p>
+<pre class="codeinput">No = 12;
+xn1 =@(n1)  n1.*(heaviside(n1+3)-heaviside(n1-4));
+</pre>
+<p>Por el heaviside lo demas se hace cero Formula para encontar potencia de una se&ntilde;al real periodica aplicada a la se&ntilde;al xn1</p>
+<pre class="codeinput">Px = (sum(abs(xn1(n1)).^2))/No;
+</pre>
+<h2 id="47">Ejercicio 5</h2>
+<p>
+<img vspace="5" hspace="5" src="Ejecutable5.PNG" alt=""> </p>
+<h2 id="49">Referencias</h2>
+<p>Lathi. (s.&nbsp;f.). (Oxford Series in Electrical and Computer Engineering) B. P. Lathi, R. A. Green - Linear Syste.</p>
+<pre class="language-matlab">
+<span class="keyword">for</span> x = 1:10
+    disp(x)
+<span class="keyword">end</span>
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Práctica 4: Señales Discretas
+%
+% * Hernández López Daniel 
+% * Jaime Hernández Jaime
+% * Ojeda Salgado Rodrigo
+% * Reyes Guevara Nathalia
+% * Riveros Valencia Javier Alejandro
+% * 2MV3
+%% Objetivos de la práctica
+% 
+% * Manipulación básica de MATLAB
+% * Gráficas de señales reales y complejas discretas
+% * Transformación de señales discretas (escalamientos y traslaciones)
+% 
+
+
+%% Señales discretas
+%% Ejercicio 1
+% Para permitir el muestreo ascendente, es necesario modificar la función
+% para que asigne un cero a las entradas que no sean enteras.
+%%
+figure;
+f = @(n) exp(-n/5).*cos(pi*n/5).*(n>=0).*(n==fix(n));
+n = -10:10; stem(n,f(n/2),'k.'); ylabel('f[n/2]'); xlabel('n'); axis([-10.5 10.5 -0.5 1.1]);
+%%
+% El término agregado (n==fix(n)) es uno si n es un número entero y 
+% cero si n no es un número entero. el modificado
+% La función es fácil de probar.
+%%
+figure;
+f = @(n) exp(-n/5).*cos(pi*n/5).*(n>=0).*(n==fix(n));
+n = -10:10; stem(n,f(n/2),'k.'); ylabel('f[n/2]'); xlabel('n'); axis([-10.5 10.5 -0.5 1.1]);
+
+%% Ejercicio 2 
+% Para las señales mostradas en la figura P3.1-1b,bosqueje las siguientes señales:
+% Generando la función original
+% Iniciamos recreando la señal, mostrada en la grafica que muestra "Lathi" Hacemos anonima la funcion y la guardamos en la varibale "y". Continuamente proponemos un intervalo adecuado y se pueda representar en la grafica correctamente.
+% Definir los puntos de la señal discreta
+%%
+x = [0 1 2 3 4 5 6];
+y = [0 1 2 3 2 1 0];
+%%
+stem(x, y, 'filled', 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b');
+%%
+% Establecer el rango de los ejes
+%%
+xlim([-1 7]);
+ylim([-1 4]);
+
+grid on;
+
+title('x[n]');
+xlabel('n');
+ylabel('x[n]');
+%%
+% Aplicar transformaciones
+% (a) x[-n]: La señal se refleja en el eje horizontal
+%%
+figure;
+x_b = x - 6;
+y_b = y;
+stem(x_b, y_b, 'filled', 'MarkerFaceColor', 'bl', 'MarkerEdgeColor', 'b');
+grid on;
+title('x[-n]');
+xlabel('n');
+ylabel('x[-n]');
+%%
+% (b) x[n+6]: Se adelanta 6 unidades
+%%
+figure;
+x_b = x - 6;
+y_b = y;
+stem(x_b, y_b, 'filled', 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b');
+grid on;
+title('x[n+6]');
+xlabel('n');
+ylabel('x[n+6]');
+%%
+% (c) x[n-6]: La señal se atraza 6 unidades
+%%
+figure;
+x_c = x + 6;
+y_c = y;
+stem(x_c, y_c, 'filled', 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b');
+grid on;
+title('x[n-6]');
+xlabel('n');
+ylabel('x[n-6]');
+%%
+% (d) x[3n]: Compresión en el eje n por un factor de 3
+%%
+figure;
+x_d = -1:6;
+y_d = [0 0 3 0 0 0 0 0]; 
+stem(x_d, y_d, 'filled', 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b');
+grid on;
+title('x[3n]');
+xlabel('n');
+ylabel('x[3n]');
+%%
+% (e) x[n/3]: Expansión en el eje n por un factor de 3
+%%
+figure;
+x_e = x * 3;
+y_e = y;
+stem(x_e, y_e, 'filled', 'MarkerFaceColor', 'bl', 'MarkerEdgeColor', 'bl');
+grid on;
+title('x[n/3]');
+xlabel('n');
+ylabel('x[n/3]');
+%%
+% (f) x[3-n]: Reflejo respecto al eje horizontal y desplazamiento hacia la derecha en 3 unidades
+%%
+figure;
+x_f = 3 - x;
+y_f = y;
+stem(x_f, y_f, 'filled', 'MarkerFaceColor', 'b', 'MarkerEdgeColor', 'b');
+grid on;
+title('x[3-n]');
+xlabel('n');
+ylabel('x[3-n]');
+
+%% Ejercicio 3
+% Para empezar, observamos que x(t) comienza en t = π. 
+% Dado que 2−t decae a menos de 1/100 de su resistencia original
+% en 7 segundos, es suficiente representar x(t) en t = 10.
+%
+% Dado que xo(t) incluye x(t) y su reflexión, a el rango de tiempo adecuado
+% para nuestra gráfica es −10 ≤ t ≤ 10. 
+%%
+ u = @(t) 1.0*(t>=0); t = -10:1/20:10;
+ %%
+% Dado que cos(2πt) oscila un ciclo por segundo, a una densidad de
+% trama de 20 puntos por segundo es suficiente para una trama de
+% calidad razonable.
+%%
+ x = @(t) 2.^(-t).*cos(2*pi*t).*u(t-pi); xo = @(t) (x(t)-x(-t))/2;
+ %%
+% Usamos la funcion plot con las variables previamente designadas y graficamos:
+%%
+ plot(t,xo(t),'k-'); xlabel('t'); ylabel('x_o(t)'); grid on;
+ axis([-10 10 -1/20 1/20]); set(gca,'xtick',[-10 -pi 0 pi 10]);
+
+%% Ejercicio 4
+% Problema 3.1-1 c
+% Find the energy of the signal depicted in Fig.P3.1-1c
+
+%%
+% 
+% <<img2.PNG>>
+% 
+%%
+% 
+% <<img1.PNG>>
+% 
+% Por la naturaleza de la señal podemos definir este intervalo
+%%
+n = -3:3;
+%%
+sympref('HeavisideAtOrigin',1);
+%%
+% Hacemos anónima a la funcion
+%%
+xn = @(n) 3*n.*(heaviside(n+3)-heaviside(n-4)); 
+%%
+% Revisando el ejercicio 3 la formula para el cálculo general de la energía 
+% de una señal
+% discreta finita será: E=(sum(f(n).^2) con el intervalo n definido
+% Aplicamos la formula para la señal xn, y obtenemos 
+%%
+Exn = sum(xn(n).^2);
+%%
+% Problema 3.1-2 
+% 3.1-2 Find the power of the signals illustrated in Fig.P3.1-2.
+
+%%
+% 
+% <<FILENAME.PNG>>
+% 
+% <<FILENAME.PNG>>
+% 
+% 
+% Como se observa que la funcion es periodica podemos definir la señal en el
+% intervalo de 0 hasta No-1, pero para fines prácticos la definiremos en (-3,8)
+%%
+sympref('HeavisideAtOrigin',1);
+
+n1 = -3:8; 
+%%
+% Esto por que No = 12
+%%
+No = 12;
+xn1 =@(n1)  n1.*(heaviside(n1+3)-heaviside(n1-4));
+%%
+% Por el heaviside lo demas se hace cero
+% Formula para encontar potencia de una señal real periodica aplicada a la
+% señal xn1
+%%
+Px = (sum(abs(xn1(n1)).^2))/No;  
+%%
+%% Ejercicio 5
+%%
+% 
+% <<Ejecutable5.PNG>>
+% 
+
+
+%% Referencias
+% Lathi. (s. f.). (Oxford Series in Electrical and Computer Engineering) 
+% B. P. Lathi, R. A. Green - Linear Syste.
+%%
+% 
+%   for x = 1:10
+%       disp(x)
+%   end
+% 
+
+##### SOURCE END #####
+-->
+</body>
+</html>
